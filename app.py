@@ -278,6 +278,8 @@ def read_congregate(file_bytes, sheet_name):
                 records.append({"School": str(school).strip(), "Value": value,
                                 "Menu_Item": str(menu_item).strip(),
                                 "Meal_Type": str(meal_type).strip() if meal_type else ""})
+            elif records:
+                records.append({})
     else:
         for row in ws.iter_rows(min_row=2, values_only=True):
             if len(row) < 5:
@@ -287,7 +289,11 @@ def read_congregate(file_bytes, sheet_name):
                 records.append({"School": str(school).strip(), "Value": value,
                                 "Menu_Item": str(menu_item).strip(),
                                 "Meal_Type": str(meal_type).strip() if meal_type else ""})
+            elif records:
+                records.append({})
     wb.close()
+    while records and not records[-1]:
+        records.pop()
     return records
 
 
@@ -309,7 +315,11 @@ def read_bulk(file_bytes):
                             "Menu_Item": str(menu_item).strip(),
                             "Delivery": str(delivery).strip() if delivery else "",
                             "Type": str(type_).strip() if type_ else ""})
+        elif records:
+            records.append({})
     wb.close()
+    while records and not records[-1]:
+        records.pop()
     return records
 
 
@@ -325,7 +335,11 @@ def read_breakdown(file_bytes):
             records.append({"School": str(school).strip(), "Room": str(room).strip() if room else "",
                             "Value": value, "Menu_Item": str(menu_item).strip(),
                             "Delivery_": str(delivery).strip() if delivery else ""})
+        elif records:
+            records.append({})
     wb.close()
+    while records and not records[-1]:
+        records.pop()
     return records
 
 
