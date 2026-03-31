@@ -3,79 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Label Production</title>
+    <title>Label Production – Healthy Heart Foods</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --orange: #fc5000;
+            --orange-dark: #c43d00;
+            --green: #006e58;
+            --green-dark: #005544;
+            --cream: #f3f3e7;
+            --tan: #fafaf2;
+            --dark: #1a1a1a;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .container { background: #fff; border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.1); padding: 40px; max-width: 520px; width: 100%; }
-        h1 { font-size: 24px; margin-bottom: 8px; }
-        .subtitle { color: #666; margin-bottom: 28px; font-size: 14px; }
-        label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
-        .help { color: #888; font-size: 12px; margin-bottom: 16px; }
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            background: var(--green);
+            padding: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .header img { height: 52px; }
+        .header h1 {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+            width: 100%;
+        }
+        .container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 36px 40px;
+            max-width: 520px;
+            width: 100%;
+            border-top: 4px solid var(--orange);
+        }
+        .card-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 4px;
+        }
+        .subtitle { color: #6a7282; margin-bottom: 24px; font-size: 14px; }
+        label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 14px; color: var(--dark); }
+        .help { color: #99a1af; font-size: 12px; margin-bottom: 16px; }
         input[type="file"], input[type="text"], select {
-            width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px;
-            font-size: 14px; margin-bottom: 4px; background: #fafafa;
+            width: 100%; padding: 10px 12px; border: 1px solid #d1d5dc; border-radius: 8px;
+            font-family: inherit; font-size: 14px; margin-bottom: 4px; background: var(--tan);
+            transition: border-color 0.2s;
+        }
+        input[type="file"]:focus, input[type="text"]:focus, select:focus {
+            outline: none; border-color: var(--green);
         }
         input[type="file"] { padding: 8px; cursor: pointer; }
-        select { appearance: none; background: #fafafa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23666' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center; }
+        select {
+            appearance: none;
+            background: var(--tan) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23006e58' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center;
+        }
         .field { margin-bottom: 20px; }
         button {
-            width: 100%; padding: 14px; background: #2563eb; color: #fff; border: none;
-            border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;
+            width: 100%; padding: 14px; background: var(--orange); color: #fff; border: none;
+            border-radius: 8px; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer;
             margin-top: 8px; transition: background 0.2s;
         }
-        button:hover { background: #1d4ed8; }
-        button:disabled { background: #94a3b8; cursor: not-allowed; }
-        .flash { background: #fef2f2; color: #b91c1c; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
-        .spinner { display: none; text-align: center; margin-top: 12px; color: #666; font-size: 14px; }
-        .divider { border-top: 1px solid #eee; margin: 24px 0; }
+        button:hover { background: var(--orange-dark); }
+        button:disabled { background: #99a1af; cursor: not-allowed; }
+        .flash {
+            background: #fef2f2; color: #b91c1c; padding: 12px; border-radius: 8px;
+            margin-bottom: 20px; font-size: 14px; border-left: 4px solid #b91c1c;
+        }
+        .spinner { display: none; text-align: center; margin-top: 12px; color: var(--green); font-size: 14px; font-weight: 600; }
+        .divider { border-top: 1px solid #e5e7eb; margin: 24px 0; }
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            color: #99a1af;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="header">
+        <img src="{{ url_for('static', filename='logo-text.png') }}" alt="Healthy Heart">
         <h1>Label Production</h1>
-        <p class="subtitle">Upload Excel files to generate label documents</p>
-
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="flash">{{ messages[0] }}</div>
-        {% endif %}
-        {% endwith %}
-
-        <form id="labelForm" action="/generate" method="post" enctype="multipart/form-data">
-            <div class="field">
-                <label for="date_label">Production Date</label>
-                <input type="text" id="date_label" name="date_label" placeholder="e.g. 3-27" required>
-                <p class="help">Used for output filenames (e.g. "Cong 3-27 Labels.docx")</p>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="field">
-                <label for="congregate_file">Congregate File (.xlsm)</label>
-                <input type="file" id="congregate_file" name="congregate_file" accept=".xlsm,.xlsx">
-            </div>
-
-            <div class="field" id="tab-selector" style="display:none;">
-                <label for="congregate_tab">Congregate Tab</label>
-                <select id="congregate_tab" name="congregate_tab">
-                    <option value="MergeInfo">MergeInfo</option>
-                </select>
-                <p class="help">Which sheet to pull Congregate label data from</p>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="field">
-                <label for="bulk_file">Bulk / Breakdown File (.xlsm)</label>
-                <input type="file" id="bulk_file" name="bulk_file" accept=".xlsm,.xlsx">
-                <p class="help">Generates both Bulk and Breakdown labels from this file</p>
-            </div>
-
-            <button type="submit" id="submitBtn">Generate Labels</button>
-            <div class="spinner" id="spinner">Generating labels... this may take a moment.</div>
-        </form>
     </div>
+
+    <div class="main">
+        <div class="container">
+            <h2 class="card-title">Generate Labels</h2>
+            <p class="subtitle">Upload Excel files to generate label documents</p>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="flash">{{ messages[0] }}</div>
+            {% endif %}
+            {% endwith %}
+
+            <form id="labelForm" action="/generate" method="post" enctype="multipart/form-data">
+                <div class="field">
+                    <label for="date_label">Production Date</label>
+                    <input type="text" id="date_label" name="date_label" placeholder="e.g. 3-27" required>
+                    <p class="help">Used for output filenames (e.g. "Cong 3-27 Labels.docx")</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="field">
+                    <label for="congregate_file">Congregate File (.xlsm)</label>
+                    <input type="file" id="congregate_file" name="congregate_file" accept=".xlsm,.xlsx">
+                </div>
+
+                <div class="field" id="tab-selector" style="display:none;">
+                    <label for="congregate_tab">Congregate Tab</label>
+                    <select id="congregate_tab" name="congregate_tab">
+                        <option value="MergeInfo">MergeInfo</option>
+                    </select>
+                    <p class="help">Which sheet to pull Congregate label data from</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="field">
+                    <label for="bulk_file">Bulk / Breakdown File (.xlsm)</label>
+                    <input type="file" id="bulk_file" name="bulk_file" accept=".xlsm,.xlsx">
+                    <p class="help">Generates both Bulk and Breakdown labels from this file</p>
+                </div>
+
+                <button type="submit" id="submitBtn">Generate Labels</button>
+                <div class="spinner" id="spinner">Generating labels... this may take a moment.</div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">Healthy Heart Foods</div>
 
     <script>
         // When Congregate file is selected, fetch available tabs
